@@ -5,18 +5,30 @@ A Claude Code skill that enables advanced Icelandic writing with correct grammar
 ## What it does
 
 - Writes, translates, and reviews Icelandic text with proper grammar
-- Covers the full case system, noun declension, verb conjugation, word order (V2), and more
+- Enforces rules Claude commonly gets wrong: dative sickness, indicative encroachment, V2 word order, strong/weak adjective declension
 - Automatically verifies output with GreynirCorrect before presenting to the user
-- Avoids common errors: dative sickness, indicative encroachment, anglicisms
-- Includes an idiom and expression reference for natural-sounding prose
+- Includes reference files for noun declension, verb conjugation, and syntax rules
+
+## Structure
+
+```
+icelandic-writer/
+├── SKILL.md                    # Core instructions and grammar rules (~180 lines)
+├── scripts/
+│   └── check_icelandic.py      # GreynirCorrect verification script
+└── references/
+    ├── noun-declension.md      # Paradigm tables, articles, pronouns
+    ├── verb-conjugation.md     # All verb classes, subjunctive, middle voice
+    └── syntax-rules.md         # V2 details, Stylistic Fronting, topicalization
+```
 
 ## Installation
 
-Copy `SKILL.md` into your Claude Code skills directory:
+Copy the entire directory into your Claude Code skills directory:
 
 ```bash
 mkdir -p ~/.claude/skills/icelandic-writer
-cp SKILL.md ~/.claude/skills/icelandic-writer/
+cp -r SKILL.md scripts/ references/ ~/.claude/skills/icelandic-writer/
 ```
 
 ## Requirements
